@@ -1,0 +1,74 @@
+{% extends 'master.html' %}
+{% load static %}
+{% block title %}Login page{% endblock %}
+{% block content %}
+
+<body>
+<div class="container mt-3">
+    <h2>login form</h2>
+    <form action="/login" method="post">
+      <div class="person">
+        <i class="bi-person-circle icons2"></i>
+      </div>
+
+        {% csrf_token %}
+      
+        
+      <div class="mb-3 mt-3">
+        <label for="user">Username:</label>
+        <input type="text" class="form-control" id="user" placeholder="Enter Username" name="login_username">
+      </div>
+
+       
+      <div class="mb-3 mt-3">
+        <label for="pswd">Password:</label>
+        <input type="password" class="form-control" id="login_password" placeholder="Enter password" name="login_password">
+      </div>
+
+      <button type="submit">Login</button>
+    </form>
+  </div>
+
+  <style>
+
+
+
+    
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+button {
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+.person{
+  text-align: center;
+  margin: 24px 0 12px 0;
+  
+}
+.container {
+  padding: 16px;
+}
+.icons2{
+  width: 50%;
+  border-radius: 800px;
+
+}
+
+  </style>
+</body>
+{% endblock %}

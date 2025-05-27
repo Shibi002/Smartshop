@@ -1,0 +1,206 @@
+
+{% extends 'master.html' %}
+{% load static %}
+{% block title %}Cart page{% endblock %}
+{% block content %}
+ <h2 class="pro1">Cart</h2>
+<br><br>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-9 col-md-8 col-sm-12">
+
+      {% for x in cart %}
+
+      <div class="row my-2 cart-item" style="background-color:white; border-radius: 5px; padding: 15px;">
+        <div class="col-sm-4 text-center">
+
+          <div class="inbox1">
+            <!-- <img src="/media/{{x.cart_image}}" alt="" height="100px" width="100px"> -->
+            <img src="/media/{{x.cart_image}}" alt="{{x.cart_name}}" class="img" style="height: 100px; width: auto;">
+          </div>
+        </div>
+
+        <div class="col-sm-4">
+          <div class="item-name">
+            <span> {{x.cart_name}} </span>
+          </div>
+          <div class="item-price">
+            <span>price = Rs.{{x.cart_price}}</span>
+          </div>
+          <div class="item-quantity">
+            <span>
+              <a href="/cart?q=dec&cp={{x.id}}" class="btn btn-danger btn-sm">-</a>
+              {{x.cart_qty}}
+              <a href="/cart?q=inc&cp={{x.id}}" class="btn btn-success btn-sm">+</a>
+            </span>
+          </div>
+
+        </div>
+        <div class="col-sm-4 text-center">
+          <div class="item-total">
+            <span>Rs. {{x.cart_amount}}</span>
+            <br><br>
+            <a href="/cart?del={{x.id}}">
+              <button class="btn btn-primary btn-sm">
+                <i class=" bi bi-trash3-fill"></i>
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="col-lg-3 col-md-4 col-sm-12">
+      <div class="summary" style="background-color: white; min-height: 300px; padding: 15px; border-radius: 5px;" >
+      Total Amount : {{tot}}
+      <br><br>
+      Shipping : {{shp}}
+      <br><br>
+      GST : {{gst}}
+      <br>
+      <hr>
+      <br>
+      Total : {{gtot}}
+      <br><br>
+      <a href="/checkout">
+        <button class="btn btn-success">Checkout</button>
+      </a>
+    </div>
+  </div>
+</div>
+</div>
+
+{% endblock %} 
+
+<!-- 
+<h2 class="pro1">Cart</h2>
+<br><br>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-9 col-md-8 col-sm-12">
+
+            {% for x in cart %}
+            <div class="row my-2 cart-item" style="background-color: wheat; border-radius: 5px; padding: 15px;">
+                <div class="col-sm-4 text-center">
+                    <img src="/media/{{x.cart_image}}" alt="{{x.cart_name}}" class="img" style="height: 100px; width: auto;">
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="item-name">
+                        <span>{{x.cart_name}}</span>
+                    </div>
+                    <div class="item-price">
+                        <span>Price: Rs.{{x.cart_price}}</span>
+                    </div>
+                    <div class="item-quantity">
+                        <span>
+                            <a href="/cart?q=dec&cp={{x.id}}" class="btn btn-danger btn-sm">-</a>
+                            {{x.cart_qty}}
+                            <a href="/cart?q=inc&cp={{x.id}}" class="btn btn-success btn-sm">+</a>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="col-sm-4 text-center">
+                    <div class="item-total">
+                        <span>Rs. {{x.cart_amount}}</span>
+                        <br><br>
+                        <a href="/cart?del={{x.id}}" class="btn btn-primary btn-sm">
+                            <i class="bi bi-trash3-fill"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="col-lg-3 col-md-4 col-sm-12">
+            <div class="summary" style="background-color: white; min-height: 300px; padding: 15px; border-radius: 5px;">
+                <h5>Total Amount: {{tot}}</h5>
+                <h5>Shipping: {{shp}}</h5>
+                <h5>GST: {{gst}}</h5>
+                <hr>
+                <h5>Total: {{gtot}}</h5>
+                <br>
+                <a href="/checkout" class="btn btn-success">Checkout</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+ <div class="col-sm-3"> total amount avide
+      <div style="background-color: white; min-height: 300px; padding: 15px ;">
+ -->
+
+<!-- <div class="container mt-3">
+  <div class="row">
+    <div class="col-sm-9">
+      <h2>Add to Cart</h2>
+      {% csrf_token %}
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Images</th>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Subtotal</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for x in cart %}
+            <tr>
+              <td>
+                <img src="/media/{{x.cart_image}}" alt="" width="100px" height="100px">
+              </td>
+              <td> {{x.cart_name}}</td>
+              <td> {{x.cart_price}}</td>
+              <td>
+                <a href="/cart?q=dec&cp={{x.id}}" class="btn btn-danger btn-sm">-</a>
+                {{x.cart_qty}}
+                <a href="/cart?q=inc&cp={{x.id}}" class="btn btn-success btn-sm">+</a>
+              </td>
+              <td>Rs. {{x.cart_amount}}
+                <br><br>
+                <a href="/cart?del={{x.id}}">
+                  <button class="btn btn-primary btn-sm">
+                    <i class="bi bi-trash3-fill"></i>
+                  </button>
+                </a>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+      </table>
+    </div>
+    <div class="col-sm-3">
+      <div style="background-color:white; min-height:300px; margin-top: 45px;"> 
+        Total Amount : {{tot}}
+        <br><br>
+        Shipping : {{shp}}
+        <br><br>
+        GST : {{gst}}
+        <br>
+        <hr>
+        <br>
+        Total : {{gtot}}
+        <br><br>
+        <a href="/checkout">
+          <button class="btn btn-success">Checkout</button>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+        
+        
+     -->
+
+
+  
+
+
+
+

@@ -1,0 +1,33 @@
+{% extends 'master.html' %}
+{% load static %}
+{% block title %}Wishlist Page{% endblock %}
+{% block content %}
+<div class="overlay"></div>
+<div class="container">
+    <h1>My Wishlist</h1>
+    <div class="row">
+        
+            {% for x in wishlist %}
+                <div class="col-md-4">
+                        <div class="card-body">
+                            <img src="/media/{{x.wishlist_image}}" alt="Product Image" width="200px" height="200px">
+                            <h4 class="card-title">{{ x.wishlist_name }}</h4>
+                            <p class="card-text">{{ x.wishlist_price }}0</p>
+                          
+                             <span><a href="/wishlist?del={{x.id}}"><button class="btn btn-primary btn-sm">
+                                 <i class=" bi bi-trash3-fill icondlt"></i> 
+                                </button>
+                              </a>
+                            </span> 
+                                 
+                            <!-- Example of form for adding to wishlist, adjust as necessary -->
+                            <!-- <form action="{% url 'addtowishlist' x.id %}" method="POST"> -->
+                                {% csrf_token %}     
+                            <!-- </form> -->
+                     </div>
+                     
+                </div>
+            {% endfor %}
+    </div>
+</div>
+{% endblock %}

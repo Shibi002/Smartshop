@@ -1,0 +1,41 @@
+{% extends 'master.html' %}
+{% load static %}
+{% block title %}Addproduct page{% endblock %}
+{% block content %}
+<div class="container mt-3">
+    <h2 class="pro1">Add Product</h2>
+    <form action="/addproduct" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="mb-3 mt-3">
+        <label for="name">Product Name:</label>
+        <input type="text" class="form-control" id="name" placeholder="product name" name="pro_name">
+      </div>
+
+      <div class="mb-3 mt-3">
+        <label for="price">Product Price:</label>
+        <input type="number" class="form-control" id="price" placeholder="product price" name="pro_price">
+      </div>
+
+      <div class="mb-3 mt-3">
+        <label for="categories">Product Category:</label>
+        <select name="cat" id="cat">
+          {% for x in cats %}
+          <option value="{{ x.id }}">{{x.category_name}}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      
+
+      <div class="mb-3 mt-3">
+        <label for="image">Product Image:</label>
+        <input type="file" class="form-control" id="image" placeholder="product image" name="pro_image">
+      </div>
+      
+      
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+  
+
+{% endblock %}

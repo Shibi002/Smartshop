@@ -1,0 +1,78 @@
+{% extends 'master.html' %}
+{% load static %}
+{% block title %}Orders page{% endblock %}
+{% block content %}
+<h2 class="pro1">My Orders</h2>
+<br><br>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            {% for x in order %}
+            <div class="row my-2 order-item" style="background-color: wheat;">
+                <div class="col-sm-4">
+                    <div class="inboxd1">
+                        <img src="/media/{{x.order_image}}" alt="{{x.order_name}}" class="img4-fluid" height="100px">
+                    </div>                    
+                </div>
+                <div class="col-sm-4">
+                    <div class="span5">
+                        <span class="order-name"> {{x.order_name}} </span>
+                    </div>
+                    <div class="span5">
+                        <span class="order-price"> {{x.order_price}} </span>
+                    </div>
+                    <div class="span5">
+                        <span>Quantity: {{x.order_qty}}</span>
+                    </div>
+                </div>
+                <div class="col-sm-4 text-end">
+                    <div class="span5">
+                        <span class="order-amount"> {{x.order_amount}} </span>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+<!-- 
+<h2 class="pro1">My orders</h2><br><br><br>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+
+            {% for x in order %}
+            <div class="row my-2" style="background-color:wheat;">
+                <div class="col-sm-4">
+                    <div class="inboxd1">
+                        <img src="/media/{{x.order_image}}" alt="" height="100px">
+                    </div>                    
+                </div>
+                <div class="col-sm-4">
+                    <div class="span5">
+                        <span> {{x.order_name}} </span>
+                    </div>
+                    <div class="span5">
+                        <span> {{x.order_price}} </span>
+                    </div>
+                    <div class="span5">
+                        <span>
+                            Quantity : {{x.order_qty}}
+                        </span>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="span5">
+                        <span> {{x.order_amount}} </span>
+                    </div>
+                    <br>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+

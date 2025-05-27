@@ -1,0 +1,26 @@
+venv1/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+db.sqlite3
+.env
+
+# Ignore Python virtual environment
+venv1/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Django DB and settings
+db.sqlite3
+*.log
+.env
+
+# VS Code (optional)
+.vscode/
+
+# Static and media files (optional)
+staticfiles/
+media/

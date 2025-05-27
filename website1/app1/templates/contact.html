@@ -1,0 +1,33 @@
+ {% extends 'master.html' %}
+{% load static %}
+{% block title %}Contact page{% endblock %}
+{% block content %}
+<div class="container mt-3">
+    <h2 class="pro1">Contact form</h2>
+    <form action="/contact" method="post">
+      {% csrf_token %}
+      <div class="mb-3 mt-3">
+        <label for="name">Name:</label>
+        <input type="text" class="form-control" id="name" placeholder="Enter name" name="contact_name">
+      </div>
+
+      <div class="mb-3 mt-3">
+        <label for="email">Email:</label>
+        <input type="email" class="form-control" id="email" placeholder="Enter email" name="contact_email">
+      </div>
+
+      <div class="mb-3 mt-3">
+        <label for="msg">Message:</label>
+        <textarea class="form-control" id="msg" placeholder="Enter your message" name="contact_message">
+        </textarea>
+      </div>
+      
+      
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+  
+
+{% endblock %}
+
+    
